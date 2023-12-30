@@ -10,6 +10,15 @@ var high_score = 0
 func get_score() -> int:
 	return score
 
+func healthUp(a):
+	health += a
+	
+func healthDown(a):
+	health -= a
+	
+func getHealth():
+	return health		
+
 func set_score(v: int):
 	score = v
 	if score > high_score:
