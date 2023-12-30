@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://cs0s3jnefyqhr"]
+
+[ext_resource type="Script" path="res://Game/game.gd" id="1_o2um4"]
+[ext_resource type="PackedScene" uid="uid://bbi37d8idbq2l" path="res://Sperm/sperm.tscn" id="1_odafg"]
+[ext_resource type="PackedScene" uid="uid://bfin8g0qtlosd" path="res://Egg/egg.tscn" id="2_h74cu"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_o2um4")
+
+[node name="Sperm" parent="." instance=ExtResource("1_odafg")]
+position = Vector2(64, 48)
+
+[node name="Egg" parent="." instance=ExtResource("2_h74cu")]
+position = Vector2(410, 410)

@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://cp6n3uqum3d6u"]
+
+[ext_resource type="Script" path="res://HUD/hud.gd" id="1_547mg"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_547mg")
+
+[node name="MenstrualTimer" type="Label" parent="."]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 209.0
+offset_bottom = 36.0
+text = "Menstrual Cycle: Deactive"
+
+[node name="score" type="Label" parent="."]
+offset_left = 10.0
+offset_top = 35.0
+offset_right = 79.0
+offset_bottom = 61.0
+text = "score: 0"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true

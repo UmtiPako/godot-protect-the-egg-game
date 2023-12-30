@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfin8g0qtlosd"]
+
+[ext_resource type="Script" path="res://Egg/egg.gd" id="1_n63ck"]
+[ext_resource type="Texture2D" uid="uid://d4ilonewwj1is" path="res://Assets/egg.png" id="1_wfjay"]
+
+[node name="Egg" type="Area2D"]
+texture_filter = 1
+scale = Vector2(15, 15)
+script = ExtResource("1_n63ck")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_wfjay")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-5, -5, -5, -6, 5, -6, 5, -5, 6, -5, 6, 5, 5, 5, 5, 6, -5, 6, -5, 5, -6, 5, -6, -5)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
