@@ -9,12 +9,12 @@ func _ready():
 
 func menstruation_start():
 	timer.start()
-
+	
 func death_by_sperm():
 	timer.stop()
 
 func _on_timer_timeout():
-	GameManager.health += 1
+	GameManager.healthUp(1)
 
 func menstrualCheck():
 	if timer.time_left != 0 and timer.time_left != null:
