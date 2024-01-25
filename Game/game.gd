@@ -66,5 +66,3 @@ func menstrualCheck():
 		$HUD/MenstrualTimer.text = "Menstrual Cycle: %d" % (int($HUD/Timer.time_left) % 60)
 	else:
 		$HUD/MenstrualTimer.text = "Menstrual Cycle: Deactive"
-
-

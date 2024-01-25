@@ -1,9 +1,11 @@
+Timer
+Camera2D
+AudioStreamPlayer
 TextureRect
 Label
 CanvasLayer
 MarginContainer
 AnimationPlayer
-Timer
 Node
 Marker2D
 CollisionPolygon2D

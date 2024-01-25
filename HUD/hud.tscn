@@ -20,5 +20,7 @@ offset_bottom = 61.0
 text = "score: 0"
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 30.0
+wait_time = 5.0
 one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,18 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://cs0s3jnefyqhr"]
+[gd_scene load_steps=7 format=3 uid="uid://cs0s3jnefyqhr"]
 
 [ext_resource type="Script" path="res://Game/game.gd" id="1_o2um4"]
 [ext_resource type="PackedScene" uid="uid://bbi37d8idbq2l" path="res://Sperm/sperm.tscn" id="1_odafg"]
 [ext_resource type="PackedScene" uid="uid://bfin8g0qtlosd" path="res://Egg/egg.tscn" id="2_h74cu"]
 [ext_resource type="Texture2D" uid="uid://s7q1eohbso5" path="res://Assets/background.png" id="3_opbjn"]
 [ext_resource type="PackedScene" uid="uid://cp6n3uqum3d6u" path="res://HUD/hud.tscn" id="4_2aqvc"]
+[ext_resource type="Script" path="res://Game/shake.gd" id="6_7f4mk"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_o2um4")
 sperm_scene = ExtResource("1_odafg")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_right = 840.0
-offset_bottom = 840.0
+offset_left = -4568.0
+offset_top = -3772.0
+offset_right = -3728.0
+offset_bottom = -2932.0
+scale = Vector2(14.2, 18.0702)
 texture = ExtResource("3_opbjn")
 
 [node name="SpermHolder" type="Node" parent="."]
@@ -40,4 +44,12 @@ autostart = true
 
 [node name="HUD" parent="." instance=ExtResource("4_2aqvc")]
 
+[node name="BgMusic" type="AudioStreamPlayer" parent="."]
+autoplay = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(420, 420)
+script = ExtResource("6_7f4mk")
+
 [connection signal="timeout" from="Spawn Timer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="finished" from="BgMusic" to="." method="_on_bg_music_finished"]
