@@ -1,7 +1,46 @@
-[gd_scene load_steps=3 format=3 uid="uid://bfin8g0qtlosd"]
+[gd_scene load_steps=8 format=3 uid="uid://bfin8g0qtlosd"]
 
 [ext_resource type="Script" path="res://Egg/egg.gd" id="1_n63ck"]
 [ext_resource type="Texture2D" uid="uid://d4ilonewwj1is" path="res://Assets/egg.png" id="1_wfjay"]
+[ext_resource type="PackedScene" uid="uid://cp6n3uqum3d6u" path="res://HUD/hud.tscn" id="3_nmiik"]
+[ext_resource type="AudioStream" uid="uid://bs1ye140fb0hp" path="res://Assets/damage.mp3" id="4_7a1jl"]
+
+[sub_resource type="Animation" id="Animation_pdlra"]
+resource_name = "damaged"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.921569, 0.141176, 0.168627, 1), Color(0.537255, 0, 0.211765, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_yqojg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ti4bx"]
+_data = {
+"RESET": SubResource("Animation_yqojg"),
+"damaged": SubResource("Animation_pdlra")
+}
 
 [node name="Egg" type="Area2D"]
 texture_filter = 1
@@ -9,13 +48,26 @@ scale = Vector2(15, 15)
 script = ExtResource("1_n63ck")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3875, 0.3875)
 texture = ExtResource("1_wfjay")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-5, -5, -5, -6, 5, -6, 5, -5, 6, -5, 6, 5, 5, 5, 5, 6, -5, 6, -5, 5, -6, 5, -6, -5)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 30.0
 one_shot = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(0.3875, 0.3875)
+polygon = PackedVector2Array(-16.0667, -9, -15.9333, 8.86667, -15.1333, 8.93333, -15.0667, 11.9333, -14.0667, 12.0667, -13.9333, 13.9333, -12.8, 13.9333, -13, 15.1333, -11.9333, 15.0667, -12, 15.9333, 12.0667, 15.9333, 12, 14.9333, 13.1333, 15.0667, 13, 13.9333, 13.9333, 13.9333, 14, 12.0667, 15, 11.9333, 15.1333, 8.93333, 15.8667, 8.93333, 16.0667, -9, 14.9333, -9.06667, 15, -11.9333, 14.0667, -11.9333, 13.9333, -13.9333, 13, -13.8667, 12.9333, -14.8667, 12.0667, -14.9333, 12, -16, -12, -16, -12, -14.9333, -13.0667, -15, -13.0667, -14, -14, -14, -14, -11.9333, -15, -11.9333, -15, -9)
+
+[node name="HUD" parent="." instance=ExtResource("3_nmiik")]
+
+[node name="DamageSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_7a1jl")
+volume_db = 24.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ti4bx")
+}
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

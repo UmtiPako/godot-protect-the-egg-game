@@ -10,6 +10,7 @@ extends Node2D
 @onready var spawn_y_positions = [spawnUL.position.y,spawnLL.position.y]
 @onready var spawn_timer = $"Spawn Timer"
 @onready var music_list = ["ah_sana","alco","all_my_fellas","devil","moskau","smurf"]
+@onready var isGameOver = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,8 +20,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	print(GameManager.health)
-
+	if isGameOver:
+		if Input.is_action_just_pressed("ui_accept"):
+			GameManager.load_menu()
+	
 func music_selector():
 	$BgMusic.stream = load("res://Music/%s.mp3" % music_list[randf_range(0,6)])
 	$BgMusic.play()	
@@ -54,15 +57,14 @@ func spawn_sperm(a):
 	
 func death_by_sperm():	
 	die()
+	$BgMusic.stop()
+	$GameOverScreen.visible = true
+	isGameOver = true
+	$GameOverSound.play()
+	GameManager.save_game()
 
 func _on_spawn_timer_timeout():
 	spawn_sperm(randf_range(-1,1))
 
 func _on_timer_timeout():
 	GameManager.health += 1
-
-func menstrualCheck():
-	if $HUD/Timer.time_left != 0 and $HUD/Timer.time_left != null:
-		$HUD/MenstrualTimer.text = "Menstrual Cycle: %d" % (int($HUD/Timer.time_left) % 60)
-	else:
-		$HUD/MenstrualTimer.text = "Menstrual Cycle: Deactive"

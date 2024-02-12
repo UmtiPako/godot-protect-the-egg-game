@@ -11,7 +11,12 @@ config_version=5
 [application]
 
 config/name="TheyAreComing"
+run/main_scene="res://MainMenu/main_menu.tscn"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="SaveSystem"
 config/features=PackedStringArray("4.1", "Mobile")
+boot_splash/image="res://Assets/splash (1).png"
+config/icon="res://Assets/Logo_-removebg-preview (1) (1).png"
 
 [autoload]
 

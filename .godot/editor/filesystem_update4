@@ -1,10 +1,12 @@
 res://Game/game.tscn
+res://Game/game.gd
 res://Sperm/sperm.tscn
 res://Egg/egg.tscn
 res://Singletons/game_manager.tscn
 res://Menu/main_menu.tscn
 res://HUD/hud.tscn
-res://GameManager.gd
 res://Egg/egg.gd
-res://Game/shake.gd
-res://Game/game.gd
+res://MainMenu/main_menu.tscn
+res://MainMenu/main_menu.gd
+res://GameManager.gd
+res://save_game.gd

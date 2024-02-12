@@ -22,6 +22,7 @@ func player_scored():
 func _on_mouse_entered():
 	spermSpeed = 0
 	player_scored()
+	$AudioStreamPlayer.play()
 	sperm_animation.play("vanish")
 
 func death_by_sperm():

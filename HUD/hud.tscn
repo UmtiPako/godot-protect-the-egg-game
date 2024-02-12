@@ -1,26 +1,37 @@
-[gd_scene load_steps=2 format=3 uid="uid://cp6n3uqum3d6u"]
+[gd_scene load_steps=5 format=3 uid="uid://cp6n3uqum3d6u"]
 
 [ext_resource type="Script" path="res://HUD/hud.gd" id="1_547mg"]
+[ext_resource type="FontFile" uid="uid://35ksml1wxw16" path="res://Assets/Fonts/ARCADECLASSIC.TTF" id="2_hge7e"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_c41ny"]
+font = ExtResource("2_hge7e")
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_v0y54"]
+font = ExtResource("2_hge7e")
+font_size = 32
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_547mg")
 
 [node name="MenstrualTimer" type="Label" parent="."]
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 209.0
-offset_bottom = 36.0
-text = "Menstrual Cycle: Deactive"
+offset_left = 388.0
+offset_top = 390.0
+offset_right = 433.0
+offset_bottom = 435.0
+label_settings = SubResource("LabelSettings_c41ny")
+horizontal_alignment = 1
 
 [node name="score" type="Label" parent="."]
-offset_left = 10.0
-offset_top = 35.0
-offset_right = 79.0
-offset_bottom = 61.0
+offset_left = 3.0
+offset_top = -7.0
+offset_right = 122.0
+offset_bottom = 40.0
 text = "score: 0"
+label_settings = SubResource("LabelSettings_v0y54")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 12.0
 one_shot = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

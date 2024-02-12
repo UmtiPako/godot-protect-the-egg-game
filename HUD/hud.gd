@@ -18,9 +18,9 @@ func _on_timer_timeout():
 
 func menstrualCheck():
 	if timer.time_left != 0 and timer.time_left != null:
-		$MenstrualTimer.text = "Menstrual Cycle: %d" % (int(timer.time_left) % 60)
+		$MenstrualTimer.text = "%d" % (int(timer.time_left) % 60)
 	else:
-		$MenstrualTimer.text = "Menstrual Cycle: Deactive"
+		$MenstrualTimer.text = "" 
 
 func on_score_updated():
 	$score.text = "score: %s" % str(GameManager.get_score())
